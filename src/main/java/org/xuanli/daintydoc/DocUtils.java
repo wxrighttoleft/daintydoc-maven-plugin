@@ -63,17 +63,4 @@ public class DocUtils {
         document.appendChild(titleElement);
         return document;
     }
-
-    public static void main(String[] args) {
-        try {
-            DocPage page = new DocPage();
-            page.setFileName("test");
-            page.setName("测试");
-            new DocUtils("/home/java-h5/temp/").out(page);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            e.printStackTrace();
-        }
-    }
 }
