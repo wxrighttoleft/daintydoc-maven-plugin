@@ -22,14 +22,16 @@ public class APIParser {
                 DocPage docpage = new DocPage();
                 docpage.setFileName(classDoc.toString());
                 for (Tag tag : classDoc.tags()) {
-                    if (tag.name().substring(1).startsWith("apidoc-name")) {
-                        docpage.setName(tag.text());
-                    }
-                    if (tag.name().substring(1).startsWith("apidoc-desc")) {
-                        docpage.setDesc(tag.text());
+                    switch (TagEnum.getTag(tag.name())) {
+                        case NAME:
+                            docpage.setName(tag.text());
+                            break;
+                        case DESC:
+                            docpage.setDesc(tag.text());
+                            break;
                     }
                 }
-                docpage.setApInfos(apiParse(classDoc.methods()));
+                docpage.setApInfos(apiParse(classDoc.methods(false)));
                 pageList.add(docpage);
             }
         }
@@ -42,19 +44,32 @@ public class APIParser {
             if (methodDoc.tags("@apidoc-url").length > 0) {
                 APInfo apInfo = new APInfo();
                 for (Tag tag : methodDoc.tags()) {
-                    if (tag.name().substring(1).startsWith("apidoc-url")) {
-                        apInfo.setUrl(tag.text());
-                    }
-                    if (tag.name().substring(1).startsWith("apidoc-name")) {
-                        apInfo.setName(tag.text());
-                    }
-                    if (tag.name().substring(1).startsWith("apidoc-desc")) {
-                        apInfo.setDesc(tag.text());
-                    }
-                    if (tag.name().substring(1).startsWith("apidoc-param")) {
-                        if (apInfo.getParameters() == null)
-                            apInfo.setParameters(new ArrayList<APIParameter>());
-                        apInfo.getParameters().add(paramParse(tag.text()));
+                    switch (TagEnum.getTag(tag.name())) {
+                        case URL:
+                            apInfo.setUrl(tag.text());
+                            break;
+                        case NAME:
+                            apInfo.setName(tag.text());
+                            break;
+                        case DESC:
+                            apInfo.setDesc(tag.text());
+                            break;
+                        case PARAM:
+                            if (apInfo.getParameters() == null)
+                                apInfo.setParameters(new ArrayList<APIParameter>());
+                            apInfo.getParameters().add(paramParse(tag.text()));
+                            break;
+                        case SUCCESS:
+                            apInfo.setSuccess(tag.text());
+                            break;
+                        case ERROR:
+                            apInfo.setError(tag.text());
+                            break;
+                        case RETURN_PARAM:
+                            if ( apInfo.getReturnParams() == null )
+                                apInfo.setReturnParams(new ArrayList<APIParameter>());
+                            apInfo.getReturnParams().add(paramParse(tag.text()));
+                            break;
                     }
                 }
                 apInfos.add(apInfo);
@@ -64,7 +79,7 @@ public class APIParser {
     }
 
     private APIParameter paramParse(String paramstr) {
-        String[] paramDesc = paramstr.split("|");
+        String[] paramDesc = paramstr.split("\\|");
         APIParameter parameter = new APIParameter();
         parameter.setName(paramDesc[0]);
         parameter.setType(paramDesc[1]);

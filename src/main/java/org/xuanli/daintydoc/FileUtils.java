@@ -1,6 +1,6 @@
 package org.xuanli.daintydoc;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,5 +16,24 @@ public class FileUtils {
                 result.add(file.getPath());
         }
         return result;
+    }
+
+    public static void writeFile(String path, String content) {
+        File file = new File(path);
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+        if (file.exists()) {
+            file.delete();
+        }
+        try {
+            file.createNewFile();
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(content);
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new DaintyDocException(String.format("文件写入失败：%", path), e);
+        }
     }
 }

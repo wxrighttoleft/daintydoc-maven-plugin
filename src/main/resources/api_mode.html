@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>API Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      .contains{max-width: 1000px;margin:0 auto;}
+      .api-panel{display:block;margin:10px auto;}
+      .api-panel .api-title{font-weight: bold;font-size:18px;border-left:3px solid #58de6e;padding-left:15px;line-height:24px;}
+      .api-panel .api-url{font-size:16px;}
+      .api-panel table{border-right:1px solid #9c9c9c;border-bottom:1px solid #9c9c9c;border-collapse: collapse;width:100%;}
+      .api-panel table caption{text-align:left;line-height:30px;}
+      .api-panel table td,.api-panel table th{border-left:1px solid #9c9c9c;border-top:1px solid #9c9c9c;font-weight:normal;text-align:center;}
+      .api-panel .api-result-error,.api-panel .api-result-ok{white-space: pre-wrap; background-color:#b5b5b5;color: #2d2d2d;}
+    </style>
+  </head>
+  <body>
+    <div class="contains">
+
+      <h4>模块名称</h4>
+      <p id="doc-desc">模块说明</p>
+      <div class="api-panel">
+        <p class="api-title">API标题</p>
+        <p class="api-url">http://example.com/api</p>
+        <p class="api-desc">接口说明</p>
+        <table class="api-param">
+          <caption>参数列表</caption>
+          <thead>
+          <tr>
+            <th width="120">参数名</th>
+            <th width="80">数据类型</th>
+            <th width="80">是否必填</th>
+            <th width="300">描述</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p>返回结果</p>
+        <p>错误时返回</p>
+        <div class="api-result-error">
+          {
+            errorCode:100,
+            message:"操作错误"
+          }
+        </div>
+        <p>正确时返回</p>
+        <div class="api-result-ok">
+          {
+            errorCode:100,
+            message:"操作错误"
+          }
+        </div>
+        <table class="api-return-param">
+          <caption>返回参数说明</caption>
+          <thead>
+          <tr>
+            <th width="120">参数名</th>
+            <th width="80">数据类型</th>
+            <th width="80">是否必回</th>
+            <th width="300">描述</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

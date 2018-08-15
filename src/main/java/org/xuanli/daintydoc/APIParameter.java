@@ -15,11 +15,11 @@ public class APIParameter {
     /**
      * 接口参数描述
      */
-    private String desc;
+    private String desc = "";
     /**
      * 接口参数是否必填
      */
-    private boolean required;
+    private boolean required = false;
 
     public String getName() {
         return name;

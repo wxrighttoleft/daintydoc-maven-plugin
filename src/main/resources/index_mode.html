@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>API Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      .main{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .main>.api-index,.main>iframe{height:98vh;}
+      .main>.api-index{
+        width:150px;
+        flex-shrink: 1;
+        flex-grow: 0;
+      }
+      .main>iframe{
+        flex-grow: 1;
+        flex-shrink: 2;
+      }
+      .api-index{
+        border-right:1px solid #b5b5b5;
+        height:100%;
+      }
+      .api-index ul{
+        list-style: none;
+        display: block;
+        margin:0;
+        padding:0;
+      }
+      .api-index ul li:after{
+        content: "";
+        display: block;
+        height:1px;
+        background-color:#b5b5b5;
+      }
+      .api-index ul li>a,.api-index ul li>a:visited,.api-index ul li>a:active,.api-index ul li>a:hover{
+        display:block;
+        color:#000;
+        line-height:35px;
+        text-decoration: none;
+      }
+      .api-index ul li>a:hover{
+        background-color: #8ede94;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="api-index">
+        <ul>
+          <li><a href="api_mode.html" target="win">API文档</a></li>
+        </ul>
+      </div>
+      <iframe name="win" frameborder="0" src="api_mode.html"/>
+    </div>
+  </body>
+</html>

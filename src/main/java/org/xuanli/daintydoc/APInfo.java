@@ -13,15 +13,27 @@ public class APInfo {
     /**
      * 接口名称
      */
-    private String name;
+    private String name = "";
     /**
      * 接口描述
      */
-    private String desc;
+    private String desc = "";
+    /**
+     * 正确时返回结果
+     */
+    private String success = "";
+    /**
+     * 错误时返回结果
+     */
+    private String error = "";
     /**
      * 接口参数列表
      */
     private List<APIParameter> parameters;
+    /**
+     * 返回参数说明
+     */
+    private List<APIParameter> returnParams;
 
     public String getUrl() {
         return url;
@@ -53,5 +65,29 @@ public class APInfo {
 
     public void setParameters(List<APIParameter> parameters) {
         this.parameters = parameters;
+    }
+
+    public String getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(String success) {
+        this.success = success;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public List<APIParameter> getReturnParams() {
+        return returnParams;
+    }
+
+    public void setReturnParams(List<APIParameter> returnParams) {
+        this.returnParams = returnParams;
     }
 }
