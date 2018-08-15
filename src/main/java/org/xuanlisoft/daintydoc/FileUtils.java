@@ -1,4 +1,4 @@
-package org.xuanli.daintydoc;
+package org.xuanlisoft.daintydoc;
 
 import java.io.*;
 import java.util.ArrayList;

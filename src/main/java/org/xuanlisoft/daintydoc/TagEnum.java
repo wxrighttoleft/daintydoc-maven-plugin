@@ -1,4 +1,4 @@
-package org.xuanli.daintydoc;
+package org.xuanlisoft.daintydoc;
 
 public enum TagEnum {
     NAME("@apidoc-name"),

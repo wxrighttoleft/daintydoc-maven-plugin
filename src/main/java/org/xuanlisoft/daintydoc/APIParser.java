@@ -1,4 +1,4 @@
-package org.xuanli.daintydoc;
+package org.xuanlisoft.daintydoc;
 
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.MethodDoc;

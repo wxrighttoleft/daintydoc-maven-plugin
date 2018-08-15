@@ -1,4 +1,4 @@
-package org.xuanli.daintydoc;
+package org.xuanlisoft.daintydoc;
 
 import org.codehaus.plexus.util.StringUtils;
 import org.jsoup.Jsoup;

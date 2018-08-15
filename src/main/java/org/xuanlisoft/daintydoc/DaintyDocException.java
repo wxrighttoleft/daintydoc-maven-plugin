@@ -1,4 +1,4 @@
-package org.xuanli.daintydoc;
+package org.xuanlisoft.daintydoc;
 
 public class DaintyDocException extends RuntimeException {
     public DaintyDocException(String s) {
