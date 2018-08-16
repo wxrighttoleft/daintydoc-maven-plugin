@@ -4,6 +4,8 @@ import org.codehaus.plexus.util.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,15 +15,25 @@ import java.net.URL;
 public class DocUtils {
     private String outputDirection;
 
+    private final Logger logger;
+
     public DocUtils(String outputDirection) {
         this.outputDirection = outputDirection;
+        logger = LoggerFactory.getLogger(DocUtils.class);
     }
 
     public void createIndexPage() throws URISyntaxException, IOException {
         // 获取文件列表
         File outDir = new File(outputDirection);
         if (!outDir.exists()) {
-            outDir.mkdirs();
+            logger.info("Scan task stopped, Cause is files directory not exists.");
+            return;
+        }
+        // 生成索引文件前先删除索引文件，以免造成索引目录结构错误
+        File indexFile = new File(String.format("%s/index.html", outDir.getPath()));
+        if (indexFile.exists()) {
+            logger.info("Delete index file starting...");
+            indexFile.delete();
         }
         Document document = getMode("index_mode.html");
         File[] files = outDir.listFiles();
